@@ -206,4 +206,4 @@ public class CourseExamAppService : ApplicationService
 ## Conclusion
 In this article, we saw how to query from multiple DbContexts in a single query execution in the ABP Framework. We abstracted the repository and implemented it using the host application DbContext, allowing us to query from multiple repositories in a single query execution.
 
-This article was written by [Ahmad Nidal](https://community.abp.io/members/ahmadnidal.dr@gmail.com) with team instructions, especially from [Qais Al-Khateeb](https://community.abp.io/members/qais.alkhateeb@devnas-jo.com) and [Suhaib Musa](https://community.abp.io/members/suhaibmousa032@gmail.com).
+This article was written by [Ahmad Nidal](https://community.abp.io/members/Ahmad-Nidal) with team instructions, especially from [Qais Al-Khateeb](https://community.abp.io/members/qais.alkhateeb@devnas-jo.com) and [Suhaib Musa](https://community.abp.io/members/suhaibmousa032@gmail.com).
