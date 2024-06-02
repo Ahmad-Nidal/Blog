@@ -1,8 +1,87 @@
+# Clean Code Summary with Examples
+
+## Table of Contents
+- [Clean Code Summary with Examples](#clean-code-summary-with-examples)
+  - [Table of Contents](#table-of-contents)
+  - [Introduction](#introduction)
+  - [General Rules](#general-rules)
+    - [Follow Standard Conventions](#follow-standard-conventions)
+    - [Keep It Simple, Stupid (KISS)](#keep-it-simple-stupid-kiss)
+    - [Boy Scout Rule](#boy-scout-rule)
+    - [Always Find Root Cause](#always-find-root-cause)
+  - [Design Rules](#design-rules)
+    - [Keep Configurable Data at High Levels](#keep-configurable-data-at-high-levels)
+    - [Prefer Polymorphism to if/else or switch/case](#prefer-polymorphism-to-ifelse-or-switchcase)
+    - [Separate Multi-threading Code](#separate-multi-threading-code)
+    - [Prevent Over-configurability](#prevent-over-configurability)
+    - [Use Dependency Injection](#use-dependency-injection)
+    - [Follow Law of Demeter](#follow-law-of-demeter)
+  - [Understandability Tips](#understandability-tips)
+    - [Be Consistent](#be-consistent)
+    - [Use Explanatory Variables](#use-explanatory-variables)
+    - [Encapsulate Boundary Conditions](#encapsulate-boundary-conditions)
+    - [Prefer Dedicated Value Objects to Primitive Types](#prefer-dedicated-value-objects-to-primitive-types)
+    - [Avoid Logical Dependency](#avoid-logical-dependency)
+    - [Avoid Negative Conditionals](#avoid-negative-conditionals)
+  - [Naming Rules](#naming-rules)
+    - [Choose Descriptive and Unambiguous Names](#choose-descriptive-and-unambiguous-names)
+    - [Make Meaningful Distinctions](#make-meaningful-distinctions)
+    - [Use Pronounceable Names](#use-pronounceable-names)
+    - [Use Searchable Names](#use-searchable-names)
+    - [Replace Magic Numbers with Named Constants](#replace-magic-numbers-with-named-constants)
+    - [Avoid Encodings](#avoid-encodings)
+  - [Functions Rules](#functions-rules)
+    - [Small](#small)
+    - [Do One Thing](#do-one-thing)
+    - [Use Descriptive Names](#use-descriptive-names)
+    - [Prefer Fewer Arguments](#prefer-fewer-arguments)
+    - [Have No Side Effects](#have-no-side-effects)
+    - [Don’t Use Flag Arguments](#dont-use-flag-arguments)
+  - [Comments Rules](#comments-rules)
+    - [Always Try to Explain Yourself in Code](#always-try-to-explain-yourself-in-code)
+    - [Don’t Be Redundant](#dont-be-redundant)
+    - [Don’t Add Obvious Noise](#dont-add-obvious-noise)
+    - [Don’t Use Closing Brace Comments](#dont-use-closing-brace-comments)
+    - [Don’t Comment Out Code. Just Remove](#dont-comment-out-code-just-remove)
+    - [Use as an Explanation of Intent](#use-as-an-explanation-of-intent)
+    - [Use as Clarification of Code](#use-as-clarification-of-code)
+    - [Use as a Warning of Consequences](#use-as-a-warning-of-consequences)
+  - [Source Code Structure](#source-code-structure)
+    - [Separate Concepts Vertically](#separate-concepts-vertically)
+    - [Related Code Should Appear Vertically Dense](#related-code-should-appear-vertically-dense)
+    - [Declare Variables Close to Their Usage](#declare-variables-close-to-their-usage)
+    - [Dependent Functions Should Be Close](#dependent-functions-should-be-close)
+    - [Similar Functions Should Be Close](#similar-functions-should-be-close)
+    - [Place Functions in the Downward Direction](#place-functions-in-the-downward-direction)
+    - [Keep Lines Short](#keep-lines-short)
+    - [Don’t Use Horizontal Alignment](#dont-use-horizontal-alignment)
+    - [Use White Space to Associate Related Things and Disassociate Weakly Related](#use-white-space-to-associate-related-things-and-disassociate-weakly-related)
+    - [Don’t Break Indentation](#dont-break-indentation)
+  - [Objects and Data Structures](#objects-and-data-structures)
+    - [Hide Internal Structure](#hide-internal-structure)
+    - [Prefer Data Structures](#prefer-data-structures)
+    - [Avoid Hybrid Structures (Half Object and Half Data)](#avoid-hybrid-structures-half-object-and-half-data)
+    - [Should Be Small](#should-be-small)
+    - [Do One Thing](#do-one-thing-1)
+    - [A Small Number of Instance Variables](#a-small-number-of-instance-variables)
+    - [Base Class Should Know Nothing About Their Derivatives](#base-class-should-know-nothing-about-their-derivatives)
+    - [Better to Have Many Functions Than to Pass Some Code into a Function to Select a Behavior](#better-to-have-many-functions-than-to-pass-some-code-into-a-function-to-select-a-behavior)
+    - [Prefer Non-Static Methods to Static Methods](#prefer-non-static-methods-to-static-methods)
+  - [Tests](#tests)
+    - [One Assert Per Test](#one-assert-per-test)
+    - [Readable](#readable)
+    - [Fast](#fast)
+    - [Independent](#independent)
+    - [Repeatable](#repeatable)
+    - [Given, When, Then](#given-when-then)
+  - [Conclusion](#conclusion)
+
+## Introduction
 I gave ChatGPT-4o a summary of the clean code book written by [wojteklu](https://gist.github.com/wojteklu/73c6914cc446146b8b533c0988cf8d29), and then asked it to support the summary with examples and explanations. Here is the result:
 
-### General Rules
+## General Rules
 
-#### Follow Standard Conventions
+### Follow Standard Conventions
 Using standard conventions makes code predictable and easier to understand.
 
 **Java Example:**
@@ -22,7 +101,7 @@ public class customerService {
 }
 ```
 
-#### Keep It Simple, Stupid (KISS)
+### Keep It Simple, Stupid (KISS)
 Simplify code by breaking down complex logic into smaller methods.
 
 **Java Example:**
@@ -52,7 +131,7 @@ private void saveOrder(Order order) {
 }
 ```
 
-#### Boy Scout Rule
+### Boy Scout Rule
 Always leave the codebase cleaner than you found it.
 
 **Example:**
@@ -77,7 +156,7 @@ private boolean isValidOrder(Order order) {
 }
 ```
 
-#### Always Find Root Cause
+### Always Find Root Cause
 Investigate and fix the root cause of problems rather than just addressing symptoms.
 
 **Example:**
@@ -100,9 +179,9 @@ public void processPayment(Payment payment) {
 }
 ```
 
-### Design Rules
+## Design Rules
 
-#### Keep Configurable Data at High Levels
+### Keep Configurable Data at High Levels
 Store configuration settings in a configuration file or environment variables.
 
 **Java Example:**
@@ -133,7 +212,7 @@ public class DatabaseConfig {
 }
 ```
 
-#### Prefer Polymorphism to if/else or switch/case
+### Prefer Polymorphism to if/else or switch/case
 Use polymorphism to handle different behaviors.
 
 **Java Example:**
@@ -174,7 +253,7 @@ public class Square extends Shape {
 }
 ```
 
-#### Separate Multi-threading Code
+### Separate Multi-threading Code
 Keep multi-threading code separate from business logic.
 
 **Java Example:**
@@ -204,7 +283,7 @@ public class OrderService {
 }
 ```
 
-#### Prevent Over-configurability
+### Prevent Over-configurability
 Focus on essential configurations only.
 
 **Example:**
@@ -232,7 +311,7 @@ public class ApplicationConfig {
 }
 ```
 
-#### Use Dependency Injection
+### Use Dependency Injection
 Inject dependencies rather than instantiating them within classes.
 
 **Java Example:**
@@ -260,7 +339,7 @@ public class OrderService {
 }
 ```
 
-#### Follow Law of Demeter
+### Follow Law of Demeter
 A class should only communicate with its immediate dependencies.
 
 **Java Example:**
@@ -282,9 +361,9 @@ public class OrderService {
 }
 ```
 
-### Understandability Tips
+## Understandability Tips
 
-#### Be Consistent
+### Be Consistent
 Consistency in coding practices helps in understanding the code better.
 
 **Java Example:**
@@ -316,7 +395,7 @@ public class CustomerService {
 }
 ```
 
-#### Use Explanatory Variables
+### Use Explanatory Variables
 Instead of using cryptic variable names, use meaningful names.
 
 **Java Example:**
@@ -334,7 +413,7 @@ for (int number = 0; number < 10; number++) {
 }
 ```
 
-#### Encapsulate Boundary Conditions
+### Encapsulate Boundary Conditions
 Handle boundary conditions in a single place to avoid errors.
 
 **Java Example:**
@@ -360,7 +439,7 @@ private void validateOrder(Order order) {
 }
 ```
 
-#### Prefer Dedicated Value Objects to Primitive Types
+### Prefer Dedicated Value Objects to Primitive Types
 Use value objects to represent complex data rather than primitive types.
 
 **Java Example:**
@@ -387,7 +466,7 @@ public class Age {
 }
 ```
 
-#### Avoid Logical Dependency
+### Avoid Logical Dependency
 Ensure methods do not depend on the state set by other methods.
 
 **Java Example:**
@@ -421,7 +500,7 @@ public class OrderService {
 }
 ```
 
-#### Avoid Negative Conditionals
+### Avoid Negative Conditionals
 Rewrite conditions positively for better readability.
 
 **Java Example:**
@@ -437,9 +516,9 @@ if (order.isPending()) {
 }
 ```
 
-### Naming Rules
+## Naming Rules
 
-#### Choose Descriptive and Unambiguous Names
+### Choose Descriptive and Unambiguous Names
 Names should clearly describe the purpose.
 
 **Java Example:**
@@ -455,7 +534,7 @@ public void calcInt(double p, double r, int t) {
 }
 ```
 
-#### Make Meaningful Distinctions
+### Make Meaningful Distinctions
 Differentiate names meaningfully.
 
 **Java Example:**
@@ -481,7 +560,7 @@ public void setDate2(Date date2) {
 }
 ```
 
-#### Use Pronounceable Names
+### Use Pronounceable Names
 Names should be easy to read and pronounce.
 
 **Java Example:**
@@ -497,7 +576,7 @@ public void processEmp(Employee emp) {
 }
 ```
 
-#### Use Searchable Names
+### Use Searchable Names
 Names should be easy to search.
 
 **Java Example:**
@@ -513,7 +592,7 @@ public void updCust(Customer cust) {
 }
 ```
 
-#### Replace Magic Numbers with Named Constants
+### Replace Magic Numbers with Named Constants
 Define constants for magic numbers.
 
 **Java Example:**
@@ -535,7 +614,7 @@ public void setAgeLimit(int age) {
 }
 ```
 
-#### Avoid Encodings
+### Avoid Encodings
 Don’t include type information or prefixes in names.
 
 **Java Example:**
@@ -551,9 +630,9 @@ public class CustomerServiceClass {
 }
 ```
 
-### Functions Rules
+## Functions Rules
 
-#### Small
+### Small
 Functions should be small and do one thing.
 
 **Java Example:**
@@ -591,7 +670,7 @@ private void sendConfirmation(Order order) {
 }
 ```
 
-#### Do One Thing
+### Do One Thing
 Each function should perform a single task.
 
 **Java Example:**
@@ -612,7 +691,7 @@ public void saveOrder(Order order) {
 }
 ```
 
-#### Use Descriptive Names
+### Use Descriptive Names
 Function names should clearly indicate their purpose.
 
 **Java Example:**
@@ -628,7 +707,7 @@ public void sendEmail(Order order) {
 }
 ```
 
-#### Prefer Fewer Arguments
+### Prefer Fewer Arguments
 Limit the number of arguments a function takes.
 
 **Java Example:**
@@ -653,7 +732,7 @@ public class User {
 }
 ```
 
-#### Have No Side Effects
+### Have No Side Effects
 Functions should not change the state of the system.
 
 **Java Example:**
@@ -674,7 +753,7 @@ public boolean isOrderValid(Order order) {
 }
 ```
 
-#### Don’t Use Flag Arguments
+### Don’t Use Flag Arguments
 Instead of using a flag to control function behavior, split the function into multiple functions.
 
 **Java Example:**
@@ -698,9 +777,9 @@ public void processOrderWithConfirmation(Order order) {
 }
 ```
 
-### Comments Rules
+## Comments Rules
 
-#### Always Try to Explain Yourself in Code
+### Always Try to Explain Yourself in Code
 Write code that explains itself.
 
 **Java Example:**
@@ -723,7 +802,7 @@ public void processOrder(Order order) {
 }
 ```
 
-#### Don’t Be Redundant
+### Don’t Be Redundant
 Avoid unnecessary comments.
 
 **Java Example:**
@@ -735,7 +814,7 @@ int age = 25; // Set age to 25
 int age = 25;
 ```
 
-#### Don’t Add Obvious Noise
+### Don’t Add Obvious Noise
 Avoid comments stating the obvious.
 
 **Java Example:**
@@ -747,7 +826,7 @@ int i = 0; // Initialize i to 0
 int i = 0;
 ```
 
-#### Don’t Use Closing Brace Comments
+### Don’t Use Closing Brace Comments
 Proper indentation should make the code structure clear.
 
 **Java Example:**
@@ -763,7 +842,7 @@ if (order.isValid()) {
 }
 ```
 
-#### Don’t Comment Out Code. Just Remove
+### Don’t Comment Out Code. Just Remove
 Remove unused code instead of commenting it out.
 
 **Java Example:**
@@ -781,7 +860,7 @@ public void processOrder(Order order) {
 }
 ```
 
-#### Use as an Explanation of Intent
+### Use as an Explanation of Intent
 Use comments to explain why something is done, not what is done.
 
 **Java Example:**
@@ -794,7 +873,7 @@ public void processOrder(Order order) {
 }
 ```
 
-#### Use as Clarification of Code
+### Use as Clarification of Code
 Use comments to clarify complex code logic.
 
 **Java Example:**
@@ -813,7 +892,7 @@ public void calculateTotal(Order order) {
 }
 ```
 
-#### Use as a Warning of Consequences
+### Use as a Warning of Consequences
 Warn about potential side effects or important implications in the code.
 
 **Java Example:**
@@ -825,9 +904,9 @@ public void deleteOrder(Order order) {
 }
 ```
 
-### Source Code Structure
+## Source Code Structure
 
-#### Separate Concepts Vertically
+### Separate Concepts Vertically
 Keep related code together and unrelated code separate.
 
 **Java Example:**
@@ -854,7 +933,7 @@ public class OrderService {
 }
 ```
 
-#### Related Code Should Appear Vertically Dense
+### Related Code Should Appear Vertically Dense
 Code that works together should be close together in the file.
 
 **Java Example:**
@@ -881,7 +960,7 @@ public class OrderService {
 }
 ```
 
-#### Declare Variables Close to Their Usage
+### Declare Variables Close to Their Usage
 Declare variables near where they are used to make the code easier to read.
 
 **Java Example:**
@@ -897,7 +976,7 @@ public void calculateTotal(Order order) {
 }
 ```
 
-#### Dependent Functions Should Be Close
+### Dependent Functions Should Be Close
 Functions that depend on each other should be placed close to each other.
 
 **Java Example:**
@@ -919,7 +998,7 @@ public class OrderService {
 }
 ```
 
-#### Similar Functions Should Be Close
+### Similar Functions Should Be Close
 Functions that perform similar tasks should be placed together.
 
 **Java Example:**
@@ -938,7 +1017,7 @@ public class OrderService {
 
 ```
 
-#### Place Functions in the Downward Direction
+### Place Functions in the Downward Direction
 Call functions should appear above callee functions.
 
 **Java Example:**
@@ -955,7 +1034,7 @@ public class OrderService {
 }
 ```
 
-#### Keep Lines Short
+### Keep Lines Short
 Avoid long lines of code that are hard to read.
 
 **Java Example:**
@@ -969,7 +1048,7 @@ public void processOrder(Order order) {
 }
 ```
 
-#### Don’t Use Horizontal Alignment
+### Don’t Use Horizontal Alignment
 Avoid aligning code horizontally for readability.
 
 **Java Example:**
@@ -990,7 +1069,7 @@ public class OrderService {
 }
 ```
 
-#### Use White Space to Associate Related Things and Disassociate Weakly Related
+### Use White Space to Associate Related Things and Disassociate Weakly Related
 Use white space to make the code easier to read.
 
 **Java Example:**
@@ -1017,7 +1096,7 @@ public class OrderService {
 }
 ```
 
-#### Don’t Break Indentation
+### Don’t Break Indentation
 Keep consistent indentation to maintain readability.
 
 **Java Example:**
@@ -1033,9 +1112,9 @@ public class OrderService {
 }
 ```
 
-### Objects and Data Structures
+## Objects and Data Structures
 
-#### Hide Internal Structure
+### Hide Internal Structure
 Encapsulate internal data and expose only necessary methods.
 
 **Java Example:**
@@ -1055,7 +1134,7 @@ public class Order {
 }
 ```
 
-#### Prefer Data Structures
+### Prefer Data Structures
 Use data structures instead of complex objects when appropriate.
 
 **Java Example:**
@@ -1087,7 +1166,7 @@ public class Order {
 }
 ```
 
-#### Avoid Hybrid Structures (Half Object and Half Data)
+### Avoid Hybrid Structures (Half Object and Half Data)
 Don’t mix object-oriented and data-oriented styles.
 
 **Java Example:**
@@ -1115,7 +1194,7 @@ public class Order {
 }
 ```
 
-#### Should Be Small
+### Should Be Small
 Classes should be small and focused.
 
 **Java Example:**
@@ -1139,7 +1218,7 @@ public class OrderService {
 }
 ```
 
-#### Do One Thing
+### Do One Thing
 Classes should have a single responsibility.
 
 **Java Example:**
@@ -1174,7 +1253,7 @@ public class OrderService {
 }
 ```
 
-#### A Small Number of Instance Variables
+### A Small Number of Instance Variables
 Keep the number of instance variables low.
 
 **Java Example:**
@@ -1195,7 +1274,7 @@ public class Order {
 }
 ```
 
-#### Base Class Should Know Nothing About Their Derivatives
+### Base Class Should Know Nothing About Their Derivatives
 Base classes should be unaware of their subclasses.
 
 **Java Example:**
@@ -1220,7 +1299,7 @@ public class Cat extends Animal {
 }
 ```
 
-#### Better to Have Many Functions Than to Pass Some Code into a Function to Select a Behavior
+### Better to Have Many Functions Than to Pass Some Code into a Function to Select a Behavior
 Prefer multiple functions over passing behavior as parameters.
 
 **Java Example:**
@@ -1243,7 +1322,7 @@ public void processOrderWithConfirmation(Order order) {
 }
 ```
 
-#### Prefer Non-Static Methods to Static Methods
+### Prefer Non-Static Methods to Static Methods
 Use instance methods over static methods where appropriate.
 
 **Java Example:**
@@ -1263,9 +1342,9 @@ public class OrderService {
 }
 ```
 
-### Tests
+## Tests
 
-#### One Assert Per Test
+### One Assert Per Test
 Ensure each test checks a single condition.
 
 **Java Example:**
@@ -1292,7 +1371,7 @@ public class OrderServiceTest {
 }
 ```
 
-#### Readable
+### Readable
 Write tests that are easy to read and understand.
 
 **Java Example:**
@@ -1318,7 +1397,7 @@ public class OrderServiceTest {
 }
 ```
 
-#### Fast
+### Fast
 Tests should run quickly.
 
 **Java Example:**
@@ -1345,7 +1424,7 @@ public class OrderServiceTest {
 }
 ```
 
-#### Independent
+### Independent
 Tests should not depend on each other.
 
 **Java Example:**
@@ -1386,7 +1465,7 @@ public class OrderServiceTest {
 }
 ```
 
-#### Repeatable
+### Repeatable
 Tests should yield the same result every time they run.
 
 **Java Example:**
@@ -1422,7 +1501,7 @@ public class OrderServiceTest {
 }
 ```
 
-#### Given, When, Then
+### Given, When, Then
 Follow the Given-When-Then format for writing tests.
 
 **Java Example:**
