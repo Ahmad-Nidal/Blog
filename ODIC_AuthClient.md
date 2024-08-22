@@ -49,6 +49,21 @@ The authentication controller should map and store the user claims and sign in t
 When a user signs in using an external identity provider, the application should map the external user to a local user.
 The common is that the application try to find a local user with the same email address as the external user, if it exists, the application should map the external user to the local user. If it does not exist, the application should create a new local user and map the external user to the new local user.
 
+## Velusia Sample
+
+The Velusia sample authorization code flow demo, with an ASP.NET Core application acting as the client.
+
+The sample contains Two projects:
+- Velusia.Client
+- Velusia.Server
+
+To run the sample, you need to:
+- Clone the samples repo: https://github.com/openiddict/openiddict-samples
+- Run the Vsamples/Velusia/Velusia.Server project
+- Run the samples/Velusia/Velusia.Client project
+
+If you use visual studio, you can set multiple startup projects, and run both projects at the same time. and you can scope the visual studio explorer to show Velusia folder only.
+
 ## Helpful Links
 
 - [Introducing the OpenIddict client](https://kevinchalet.com/2022/02/25/introducing-the-openiddict-client/)
