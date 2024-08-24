@@ -1,13 +1,14 @@
 # OpenID Connect Authentication Client
 
-![openiddict docs](image.png)
+## What's OpenIddict?
+
+> OpenIddict aims at providing a versatile solution to implement OpenID Connect client, server and token validation support in any ASP.NET Core 2.1 (and higher) application. ASP.NET 4.6.1 (and higher) applications
+
+> Unlike many other identity providers, OpenIddict is not a turnkey solution but a framework that requires writing custom code to be operational (typically, at least an authorization controller)
 
 ---
 
-![turnkey](image-1.png)
-
-
-https://github.com/openiddict/openiddict-core
+source: https://github.com/openiddict/openiddict-core
 
 ## Most common turnkey solutions for OpenID Connect:
 
@@ -71,3 +72,4 @@ If you use visual studio, you can set multiple startup projects, and run both pr
 - [Introducing the OpenIddict client](https://kevinchalet.com/2022/02/25/introducing-the-openiddict-client/)
 - [Getting started with the OpenIddict web providers](https://kevinchalet.com/2022/12/16/getting-started-with-the-openiddict-web-providers/)
 - [OpenIddict Documentation](https://documentation.openiddict.com/)
+- [The OpenID Connect Handbook](https://auth0.com/blog/the-openid-connect-handbook)
