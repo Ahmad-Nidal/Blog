@@ -1,4 +1,4 @@
-# OpenID Connect Authentication Client
+# OpenID Connect Authentication Client With OpenIddict
 
 ## What is OpenIddict?
 
