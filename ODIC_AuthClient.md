@@ -1,75 +1,87 @@
 # OpenID Connect Authentication Client
 
-## What's OpenIddict?
+## What is OpenIddict?
 
-> OpenIddict aims at providing a versatile solution to implement OpenID Connect client, server and token validation support in any ASP.NET Core 2.1 (and higher) application. ASP.NET 4.6.1 (and higher) applications
+**OpenIddict** is a comprehensive framework designed to provide flexible support for implementing OpenID Connect clients, servers, and token validation within any ASP.NET Core 2.1 (or higher) application, as well as ASP.NET 4.6.1 (and higher) applications.
 
-> Unlike many other identity providers, OpenIddict is not a turnkey solution but a framework that requires writing custom code to be operational (typically, at least an authorization controller)
+Unlike many other identity providers, OpenIddict is not a ready-to-use, out-of-the-box solution. Instead, it acts as a framework that requires custom code to become fully operational—typically, this involves implementing an authorization controller.
 
 ---
 
-source: https://github.com/openiddict/openiddict-core
+*Source: [OpenIddict GitHub Repository](https://github.com/openiddict/openiddict-core)*
 
-## Most common turnkey solutions for OpenID Connect:
+## Common Turnkey Solutions for OpenID Connect
 
-- Orchard Core OpenID module ([link](https://docs.orchardcore.net/en/latest/reference/modules/OpenId/)), ([source code](https://github.com/OrchardCMS/OrchardCore/blob/main/src/OrchardCore.Modules/OrchardCore.OpenId/))
-- ABP Framework OpenIddict module ([link](https://abp.io/docs/latest/modules/openiddict)), ([source code](https://github.com/abpframework/abp/blob/dev/modules/openiddict/src/Volo.Abp.OpenIddict.AspNetCore/Volo/Abp/OpenIddict/))
+If you're looking for ready-made solutions for implementing OpenID Connect, the following options are popular choices you can look into:
 
-And there are simple and clean sample from OpenIddict: [Velusia](https://github.com/openiddict/openiddict-samples/tree/dev/samples/Velusia)
+- **Orchard Core OpenID Module**  
+  Documentation: [Orchard Core OpenID](https://docs.orchardcore.net/en/latest/reference/modules/OpenId/)  
+  Source Code: [Orchard Core OpenID GitHub](https://github.com/OrchardCMS/OrchardCore/blob/main/src/OrchardCore.Modules/OrchardCore.OpenId/)
 
-## OpenId Connect Client Configuration
+- **ABP Framework OpenIddict Module**  
+  Documentation: [ABP OpenIddict Module](https://abp.io/docs/latest/modules/openiddict)  
+  Source Code: [ABP OpenIddict GitHub](https://github.com/abpframework/abp/blob/dev/modules/openiddict/src/Volo.Abp.OpenIddict.AspNetCore/Volo/Abp/OpenIddict/)
 
-To configure an OpenID Connect client, you can use `AddOpenIdConnect` or `AddOpenIddict` extension methods.
+Additionally, OpenIddict offers a clean and straightforward example called **Velusia**:  
+[Velusia Sample](https://github.com/openiddict/openiddict-samples/tree/dev/samples/Velusia)
 
-examples:
+## Configuring an OpenID Connect Client
 
-**1 Using `AddOpenIdConnect`:**
+To set up an OpenID Connect client, you can utilize either the `AddOpenIdConnect` or `AddOpenIddict` extension methods in your ASP.NET Core project.
+
+### Example Configurations:
+
+**1. Using `AddOpenIdConnect`:**
 
 ```csharp
-// TODO: AddOpenIdConnect
+// Example configuration using AddOpenIdConnect
 ```
 
-**1 Using `AddOpenIddict`:**
+**2. Using `AddOpenIddict`:**
 
 ```csharp
-// TODO: AddOpenIddict
+// Example configuration using AddOpenIddict
 ```
 
-And be sure to set the callback path (RedirectUri) and implement an authentication controller to handle the callback.
-The authentication controller should map and store the user claims and sign in the user after the user is autherized by the identity provider.
+It's crucial to correctly set the callback path (RedirectUri) and to implement an authentication controller that handles the callback. The authentication controller should map the user claims, and sign in the user once they have been authorized by the identity provider.
 
 ### Authentication Controller Examples
 
-- ABP Framework: https://github.com/abpframework/abp/blob/dev/modules/openiddict/src/Volo.Abp.OpenIddict.AspNetCore/Volo/Abp/OpenIddict/Controllers/AuthorizeController.cs
-- Orchard Core: https://github.com/OrchardCMS/OrchardCore/blob/8380e35cb1086e0a33103a606faeb3ba6c8b83f8/src/OrchardCore.Modules/OrchardCore.OpenId/Controllers/AccessController.cs#L184 
-- Velusia Sample: https://github.com/openiddict/openiddict-samples/blob/dev/samples/Velusia/Velusia.Client/Controllers/AuthenticationController.cs
+Here are some examples of authentication controllers:
+
+- **ABP Framework:** [AuthorizeController.cs](https://github.com/abpframework/abp/blob/dev/modules/openiddict/src/Volo.Abp.OpenIddict.AspNetCore/Volo/Abp/OpenIddict/Controllers/AuthorizeController.cs)
+- **Orchard Core:** [AccessController.cs](https://github.com/OrchardCMS/OrchardCore/blob/8380e35cb1086e0a33103a606faeb3ba6c8b83f8/src/OrchardCore.Modules/OrchardCore.OpenId/Controllers/AccessController.cs#L184)
+- **Velusia Sample:** [AuthenticationController.cs](https://github.com/openiddict/openiddict-samples/blob/dev/samples/Velusia/Velusia.Client/Controllers/AuthenticationController.cs)
 
 ### LocalUser vs ExternalUser
 
-- LocalUser: User that is stored in the application database.
-- ExternalUser: User that is stored in an external identity provider.
+- **LocalUser:** A user stored within the application's database.
+- **ExternalUser:** A user managed by an external identity provider.
 
-When a user signs in using an external identity provider, the application should map the external user to a local user.
-The common is that the application try to find a local user with the same email address as the external user, if it exists, the application should map the external user to the local user. If it does not exist, the application should create a new local user and map the external user to the new local user.
+When an external identity provider is used for authentication, the application should map the external user to a local user account. Typically, the application searches for a local user with the same email address as the external user. If a match is found, the external user is mapped to that local user. If no match is found, a new local user is created, and the external user is mapped to this newly created account.
 
-## Velusia Sample
+## Velusia Sample Overview
 
-The Velusia sample authorization code flow demo, with an ASP.NET Core application acting as the client.
+The Velusia sample demonstrates the authorization code flow using an ASP.NET Core application acting as the client.
 
-The sample contains Two projects:
-- Velusia.Client
-- Velusia.Server
+The sample comprises two projects:
 
-To run the sample, you need to:
-- Clone the samples repo: https://github.com/openiddict/openiddict-samples
-- Run the Vsamples/Velusia/Velusia.Server project
-- Run the samples/Velusia/Velusia.Client project
+- **Velusia.Client**
+- **Velusia.Server**
 
-If you use visual studio, you can set multiple startup projects, and run both projects at the same time. and you can scope the visual studio explorer to show Velusia folder only.
+To run the sample:
+
+1. Clone the samples repository: [OpenIddict Samples GitHub](https://github.com/openiddict/openiddict-samples).
+2. Run the `Velusia.Server` project located in `samples/Velusia/`.
+3. Run the `Velusia.Client` project in `samples/Velusia/`.
+
+If you're using Visual Studio, you can configure multiple startup projects to run both the client and server simultaneously. Additionally, you can scope the Visual Studio Solution Explorer to show only the Velusia folder.
 
 ## Helpful Links
 
-- [Introducing the OpenIddict client](https://kevinchalet.com/2022/02/25/introducing-the-openiddict-client/)
-- [Getting started with the OpenIddict web providers](https://kevinchalet.com/2022/12/16/getting-started-with-the-openiddict-web-providers/)
+For more in-depth information and resources, check out the following links:
+
+- [Introducing the OpenIddict Client](https://kevinchalet.com/2022/02/25/introducing-the-openiddict-client/)
+- [Getting Started with the OpenIddict Web Providers](https://kevinchalet.com/2022/12/16/getting-started-with-the-openiddict-web-providers/)
 - [OpenIddict Documentation](https://documentation.openiddict.com/)
 - [The OpenID Connect Handbook](https://auth0.com/blog/the-openid-connect-handbook)
