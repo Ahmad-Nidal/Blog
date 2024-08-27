@@ -1,3 +1,17 @@
+
+
+
+
+```md
+notes:
+this article was written before understanding what OpenIddict is exactly and why Microsoft provides its package `Microsoft.AspNetCore.Authentication.OpenIdConnect` for OpenIdConnect. The article is a bit misleading and needs to be updated. 
+```
+
+
+---
+
+
+
 # OpenID Connect Authentication Client With OpenIddict
 
 ## What is OpenIddict?
